@@ -1,0 +1,49 @@
+<div class="card" style="background-color: rgb(27, 4, 111);">
+    <div class="row">
+        <div class="col-7">
+            <h2 align="right" style="color: aliceblue;">Clients List</h2>
+        </div>
+        <div class="col-5 text-right" style="padding-left: 5px;" align="right">
+            <button onclick="history.back()" class="btn btn-warning" style="width: 100px; padding-left: 20px;">Go Back</button>
+           <button routerLink="/" class="btn btn-danger" style="width: 100px;">Exit</button>
+        </div>
+    </div>
+</div>
+
+<div>
+    <select name="download" id="download" (change)="onDownloadEvent($event)" style="width: 200px; height: 35px; margin-right: 20px; margin-left: 50px; margin-top: 10px;">
+        <option value="Word">Word</option>
+        <option value="Excel">Excel</option>
+        <option value="PDF">PDF</option>
+    </select>
+
+    <button type="button" class="btn btn-success" (click)="buttonOnClick()">Download</button>
+</div>
+
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Machine Name</th>
+            <th>Alert</th>
+            <th>Alert Type</th>
+            <th>Threshold</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let alerts of alert; let i = index">
+            <tr>
+                <ng-container *ngIf="i === 0 || alerts.machineName !== alert[i - 1].machineName">
+                    <td>{{ alerts.machineName }}</td>
+                </ng-container>
+                <ng-container *ngIf="i !== 0 && alerts.machineName === alert[i - 1].machineName">
+                    <td> </td>
+                </ng-container>
+                <td>{{ alerts.alertName }}</td>
+                <td>{{alerts.alertType}}</td>
+                <td>{{alerts.threshold}}</td>
+                
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
+

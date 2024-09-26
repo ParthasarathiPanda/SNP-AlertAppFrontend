@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-sm navbar-da" style="background-color:black">
+    <div class="container-fluid">    
+       
+    <ul class = "nav navbar-nav">
+        
+        <button (click)="back()"class="btn btn-primary navbar-btn">Go Back</button>      
+        
+    </ul>
+  
+    </div>
+  </nav>
+  <div style="background-image: url('https://static.vecteezy.com/system/resources/previews/012/935/575/non_2x/abstract-hi-tech-cloud-connection-technology-on-blue-background-cloud-computing-big-data-and-futuristic-business-network-concept-vector.jpg');
+  background-repeat: no-repeat;background-attachment: fixed; background-size: cover; height: 460px;">
+  
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-4">
+      <h2 style="text-align: center;"class="fw-bold mb-5"><b style="color:rgb(252, 252, 254)">Add Client</b></h2>
+      <form #addProductForm="ngForm" (ngSubmit)="clientRegister()">
+        <!-- {{registerform.form.valid}} -->
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row">
+
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+              <label for="clientName" style="color: aliceblue;">Client Name</label>
+              <input type="text" name="clientName" class="form-control" placeholder=""[(ngModel)]="client.clientName" required #clientname="ngModel"
+              [class.is-invalid]="clientname.invalid"/>
+              <!-- <small class="text-danger" [class.d-none]="firstname.valid||firstname.untouched">Required field</small> -->
+              <div *ngIf="clientname.errors ">
+                <small class="text-danger" *ngIf="clientname.errors?.['required']">required field</small>
+              </div>
+             
+            </div>
+          </div>
+            <div class="col-md-6 mb-4">
+            <div class="form-outline">
+              <label for="subscription" style="color: aliceblue;">Subscription</label>
+              <input type="text" name="subscription" class="form-control" placeholder=""[(ngModel)]="client.subscription" required #Subscription="ngModel"
+              [class.is-invalid]="Subscription.invalid && Subscription.touched"/>
+              <!-- <small class="text-danger" [class.d-none]="phonenumber.valid||phonenumber.untouched">Required field</small> -->
+              <div *ngIf="Subscription.errors && (Subscription.invalid && Subscription.touched)">
+                <small class="text-danger" *ngIf="Subscription.errors?.['required']">required field</small>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+              <label for="machineName" style="color: aliceblue;">Machine Name</label>
+              <input type="text" name="machineName" class="form-control" placeholder="" [(ngModel)]="client.machineName" required min="10"  #MachineName="ngModel"
+              [class.is-invalid]="MachineName.invalid&&MachineName.touched"/>
+              <!-- <small class="text-danger" [class.d-none]="district.valid||district.untouched">Required field</small> -->
+              <div *ngIf="MachineName.errors && (MachineName.invalid && MachineName.touched)">
+                <small class="text-danger" *ngIf="MachineName.errors?.['required']">required field</small>
+                <small class="text-danger"*ngIf="MachineName.errors?.['min']">min amount is 100</small>
+              </div>
+            </div>
+          </div>
+          
+        <!-- Submit button -->
+        <button type="submit" [disabled]="addProductForm.form.invalid" class="btn btn-success">
+         Submit
+        </button>
+       
+      </form></div>
+  
+       <div>
+         <br>
+         <br><br><br>
+  <span id="copyright"style="text-align:center"><b style="color: oldlace;">&reg;All rights reserved</b></span>
+  
